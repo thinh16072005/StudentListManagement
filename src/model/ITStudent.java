@@ -3,12 +3,17 @@ package model;
 public class ITStudent extends Student {
     private double javaScore;
     private double cssScore;
+    private double itAvgScore;
     
+    
+    public ITStudent() {
+    }
 
-    public ITStudent(String id, String fullName, Address address, double javaScore, double cssScore) {
+    public ITStudent(String id, String fullName, Address address, double javaScore, double cssScore, double itAvgScore) {
         super(id, fullName, address);
         this.javaScore = javaScore;
         this.cssScore = cssScore;
+        setItAvgScore(itAvgScore);
     }
 
 
@@ -31,7 +36,19 @@ public class ITStudent extends Student {
         this.cssScore = cssScore;
     }
 
-    public double calculateItAvgScore(double javaScore, double cssScore) {
-        return (3 * javaScore + cssScore) / 4;
+    public double getItAvgScore() {
+        return itAvgScore;
     }
+
+    public void setItAvgScore(double itAvgScore) {
+        itAvgScore = (3 * getJavaScore() + getCssScore()) / 4;
+        this.itAvgScore = itAvgScore;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-10s %-20s %-50s %-10.2f %-10.2f %-10.2f", getId(), getFullName(), getAddress(), javaScore, cssScore, itAvgScore);
+    }
+
+
 }

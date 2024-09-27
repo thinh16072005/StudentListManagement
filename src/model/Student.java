@@ -46,5 +46,10 @@ public class Student {
         this.address = address;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%-10s %-20s %-50s", id, fullName, address);
+    }
+
     
 }

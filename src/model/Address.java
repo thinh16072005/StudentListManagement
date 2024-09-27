@@ -27,5 +27,10 @@ public class Address {
         return street;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s, %s, %s, %s", country, city, district, street);
+    }
+
     
 }
