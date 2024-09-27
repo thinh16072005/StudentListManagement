@@ -12,5 +12,8 @@ public class StudentTest {
         
         System.out.println("Student sorted:");
         sm.sortStudentByName();
+
+        System.out.println("Student statistics by city:");
+        sm.studentStatisticsByCity();
     }
 }

@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
 
 public class StudentManager {
     private final ArrayList<Student> studentList = new ArrayList<>();
@@ -40,7 +43,23 @@ public class StudentManager {
         displayStudentList();
     }
     
-    public void studentStatistics() {
-        
+    public void studentStatisticsByCity() {
+        Map<String, Integer> cityCount = new HashMap<>();
+        for (Student student : studentList) {
+            String city = student.getAddress().getCity();
+            cityCount.put(city, cityCount.getOrDefault(city, 0) + 1);
+        }
+        for (Map.Entry<String, Integer> entry : cityCount.entrySet()) {
+            System.out.println("- " + entry.getKey() + ": \t" + entry.getValue());
+        }
     }
+    
+    public ArrayList<Student> searchStudents(Predicate<Student> p1) {
+        ArrayList<Student> searchResult = new ArrayList<>();
+        for (Student student : studentList) {
+            if (p1.test(student)) searchResult.add(student);
+        }
+        return searchResult;
+    }
+    
 }
