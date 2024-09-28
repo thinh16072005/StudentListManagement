@@ -33,6 +33,7 @@ public class School {
     }
 
     public void displayStudentList() {
+        addStudent();
         Map<String, ArrayList<Student>> categorizedStudents = new HashMap<>();
         for (Student student : studentList) {
             String category = student instanceof ITStudent ? "IT Students" : "Biz Students";
@@ -48,7 +49,13 @@ public class School {
     
     public void sortStudents(Comparator<Student> c1) {
         studentList.sort(c1);
-        displayStudentList();
+        System.out.println("Sorted students:");
+
+        for (Student student : studentList) {
+
+            System.out.println(student);
+        }
+
     }
     
     public void studentStatistics(Predicate<Student> condition, String attribute) {

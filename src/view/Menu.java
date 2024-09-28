@@ -59,9 +59,6 @@ public abstract class Menu {
         while (true) {
             int ch = getSelected();
             execute(ch);
-            if (ch == choices.size()) {
-                break;
-            }
         }
     }    
 }

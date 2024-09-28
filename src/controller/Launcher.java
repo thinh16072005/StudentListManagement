@@ -7,7 +7,7 @@ import view.Menu;
 import view.Validation;
 
 public class Launcher extends Menu {
-    private final School school = new School();
+    School school = new School();
 
     static String[] options = {
         "Display student list",
@@ -25,7 +25,6 @@ public class Launcher extends Menu {
     
     @Override
     public void execute(int n) {
-        school.displayStudentList();
         switch (n) {
             case 1 -> school.displayStudentList();
             case 2 -> school.sortStudents((s1, s2) -> s1.getFullName().compareTo(s2.getFullName()));
