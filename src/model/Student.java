@@ -46,6 +46,15 @@ public class Student {
         this.address = address;
     }
 
+    public boolean isPassed() {
+        if (this instanceof ITStudent iTStudent) {
+            return iTStudent.getItAvgScore() >= 5;
+        } else if (this instanceof BizStudent bizStudent) {
+            return bizStudent.getBizAvgScore() >= 5;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return String.format("%-10s %-20s %-50s", id, fullName, address);

@@ -33,8 +33,16 @@ public class School {
     }
 
     public void displayStudentList() {
+        Map<String, ArrayList<Student>> categorizedStudents = new HashMap<>();
         for (Student student : studentList) {
+            String category = student instanceof ITStudent ? "IT Students" : "Biz Students";
+            categorizedStudents.computeIfAbsent(category, k -> new ArrayList<>()).add(student);
+        }
+        for (Map.Entry<String, ArrayList<Student>> entry : categorizedStudents.entrySet()) {
+            System.out.println(entry.getKey() + ":");
+            for (Student student : entry.getValue()) {
             System.out.println(student);
+            }
         }
     }
     
@@ -69,10 +77,10 @@ public class School {
         return searchResult;
     }
     
-    public void updateStudent(String id, Student student) {
+    public void updateStudent(String id, Student updatedStudent) {
         for (int i = 0; i < studentList.size(); i++) {
             if (studentList.get(i).getId().equals(id)) {
-                studentList.set(i, student);
+                studentList.set(i, updatedStudent);
                 break;
             }
         }
